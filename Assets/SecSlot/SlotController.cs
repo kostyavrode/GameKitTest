@@ -42,6 +42,11 @@ public class SlotController : MonoBehaviour
         //Component.GetComponentInChildren<SlotColumnController>().ItemsCount = new Sprite[11];
         cash.text = cashNum.ToString();
     }
+    private void OnEnable()
+    {
+        cashNum = playerCharacter.SaveData.gold;
+        cash.text = cashNum.ToString();
+    }
 
     // Start is called before the first frame update
     void Start()

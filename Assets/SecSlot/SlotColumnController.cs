@@ -29,12 +29,14 @@ public class SlotColumnController : MonoBehaviour
         for (int i = 0; i < slotItemsCount +4; i++)
         {
             _item = Instantiate(columnItemPrefab, new Vector3(0, 0, -3), Quaternion.identity).GetComponent<Image>();
+            
             _item.rectTransform.sizeDelta = new Vector2(180, 180);
             _item.transform.SetParent(this.transform);
             //_item.rectTransform.position = new Vector3(0, , 0);
             _item.rectTransform.anchoredPosition = new Vector2(0, columnHeight / slotItemsCount * -Mathf.FloorToInt((slotItemsCount + 4) / 2) + i * columnHeight / slotItemsCount);
             _item.sprite = slotItemsTexture[Random.Range(0, slotItemsTexture.Length)];
             columnItems[i] = _item;
+            _item.transform.localScale = Vector3.one;
         }
         ColumnResult = columnResult;
     }

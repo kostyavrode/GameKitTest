@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 979
+        width: 282
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d32e82565a5b9d4b8c2a55ab036327f
+      internalID: -888012379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_1
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1014
+        width: 267
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a122272d9204c146afff02b5253d90f
+      internalID: 825933773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_2
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1013
+        width: 211
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05af6b09686a6554bb465c95e0cdae84
+      internalID: -865369745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_3
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 1010
+        width: 238
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bc9aea983486048b827f81175d6137
+      internalID: -1835020306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_4
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 518
+        width: 338
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757018e30df971b4e9028c06895ede62
+      internalID: 1807035509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_5
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 518
+        width: 256
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8559b006c9edd9140a52d71f3adbf470
+      internalID: -157358073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_6
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 519
+        width: 219
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12146d6f2e4385240ac4e5dde667577f
+      internalID: 1508403113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_7
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 518
+        width: 399
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6acc30c7221474144acb22bd8c454232
+      internalID: -855332912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_8
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 44
+        width: 306
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af86f37fc2a180449ad53a87d67c7f02
+      internalID: 1036211470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_9
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 48
+        width: 286
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2bd560485168004abc27e82462bf2a5
+      internalID: -313827150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_10
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 47
+        width: 325
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fbfe75448ade84ea21753a531f5d45
+      internalID: 650088133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 494019-PHGKND-954_11
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 45
+        width: 244
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3412a1facddec22498867c77b21da2f7
+      internalID: 32117845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +371,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      494019-PHGKND-954_0: -888012379
+      494019-PHGKND-954_1: 825933773
+      494019-PHGKND-954_10: 650088133
+      494019-PHGKND-954_11: 32117845
+      494019-PHGKND-954_2: -865369745
+      494019-PHGKND-954_3: -1835020306
+      494019-PHGKND-954_4: 1807035509
+      494019-PHGKND-954_5: -157358073
+      494019-PHGKND-954_6: 1508403113
+      494019-PHGKND-954_7: -855332912
+      494019-PHGKND-954_8: 1036211470
+      494019-PHGKND-954_9: -313827150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
