@@ -27,7 +27,15 @@ namespace FarmingEngine
             int time_hours = Mathf.FloorToInt(pdata.day_time);
             int time_secs = Mathf.FloorToInt((pdata.day_time * 60f) % 60f);
 
-            day_txt.text = "DAY " + pdata.day;
+            if (Translator.instance!=null &&Translator.instance.isPortu)
+            {
+                day_txt.text = "DIA " + pdata.day;
+            }
+            else
+            {
+                day_txt.text = "DAY " + pdata.day;
+            }
+            
             time_txt.text = time_hours + ":" + time_secs.ToString("00");
 
             bool clockwise = pdata.day_time <= 12f;

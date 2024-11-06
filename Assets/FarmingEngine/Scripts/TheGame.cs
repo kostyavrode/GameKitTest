@@ -562,7 +562,7 @@ namespace FarmingEngine
 
         public static bool IsMobile()
         {
-#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN
+#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_EDITOR
             return true;
 #elif UNITY_WEBGL
             return WebGLTool.isMobile();
