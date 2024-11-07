@@ -118,8 +118,21 @@ namespace FarmingEngine
             Hide(true); //Instant hide to do show animation
 
             current_category = group;
-            title.text = group.title;
-            
+            if (Translator.instance.isPortu)
+            {
+                if (group.title == "Workshop")
+                {
+                    title.text = "Oficina";
+                }
+                else if (group.title == "Alchemy")
+                {
+                    title.text = "Alquimia";
+                }
+            }
+            else
+            {
+                title.text = group.title;
+            }
             Show();
         }
 

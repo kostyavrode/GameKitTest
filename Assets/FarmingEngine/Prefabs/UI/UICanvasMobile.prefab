@@ -19260,6 +19260,13 @@ MonoBehaviour:
   - "carregar por \xFAltimo"
   - novo jogo
   - clique para construir
+  - "\xC1udio"
+  - Pausa
+  - Pausa
+  - "VOC\xCA MORREU!"
+  - comprar
+  - "invent\xE1rio"
+  - Loja Geral da Cidade
   texts:
   - {fileID: 8541982136151977644}
   - {fileID: 7496527647587531767}
@@ -19268,6 +19275,14 @@ MonoBehaviour:
   - {fileID: 8416544654795897383}
   - {fileID: 6453128143440990662}
   - {fileID: 871611894299638034}
+  - {fileID: 3943869476048604352}
+  - {fileID: 164873182089797612}
+  - {fileID: 164873182089797612}
+  - {fileID: 4680948226185799060}
+  - {fileID: 4676127349414555238}
+  - {fileID: 978865035834095818}
+  - {fileID: 1731207849231074519}
+  isPortu: 0
 --- !u!1 &2040727025236185537
 GameObject:
   m_ObjectHideFlags: 0
@@ -65316,7 +65331,7 @@ GameObject:
   - component: {fileID: 3943869476048604352}
   - component: {fileID: 3195890513940573732}
   m_Layer: 5
-  m_Name: Music
+  m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

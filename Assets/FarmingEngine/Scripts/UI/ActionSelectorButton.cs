@@ -37,7 +37,17 @@ namespace FarmingEngine
         public void SetButton(SAction action)
         {
             this.action = action;
-            title.text = action.title;
+            if (Translator.instance.isPortu)
+            {
+                if (action.title == "Sleep")
+                {
+                    title.text = "dormir";
+                }
+            }
+            else
+            {
+                title.text = action.title;
+            }
             Show();
         }
 
