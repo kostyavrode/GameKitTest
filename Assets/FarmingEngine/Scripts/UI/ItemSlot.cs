@@ -91,6 +91,8 @@ namespace FarmingEngine
                     else if (item.title == "Rabbit") { title.text = "Coelho"; }
                     else if (item.title == "Herbs") { title.text = "Ervas"; }
                     else if (item.title == "Boots") { title.text = "Botas"; }
+                    else if (item.title == "Backpack") { title.text = "Mochila"; }
+                    else if (item.title == "Hoe") { title.text = "Enxada"; }
 
                     else
                     {
