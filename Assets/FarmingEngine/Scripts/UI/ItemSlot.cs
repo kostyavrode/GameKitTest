@@ -81,7 +81,21 @@ namespace FarmingEngine
                 if (title != null)
                 {
                     title.enabled = selected;
-                    title.text = item.title;
+                    if (item.title == "Watering Can") { title.text = "regador"; }
+                    else if (item.title == "Metal Armor") { title.text = "armadura metálica"; }
+                    else if (item.title == "Axe") { title.text = "machado"; }
+                    else if (item.title == "Wood") { title.text = "Madeira"; }
+                    else if (item.title == "Rock") { title.text = "Pedra"; }
+                    else if (item.title == "Pitchfork") { title.text = "Forcado"; }
+                    else if (item.title == "Scythe") { title.text = "Foice"; }
+                    else if (item.title == "Rabbit") { title.text = "Coelho"; }
+                    else if (item.title == "Herbs") { title.text = "Ervas"; }
+                    else if (item.title == "Boots") { title.text = "Botas"; }
+
+                    else
+                    {
+                        title.text = item.title;
+                    }
                 }
 
                 if (default_icon != null)
