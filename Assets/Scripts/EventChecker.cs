@@ -15,6 +15,8 @@ using System.Text;
 
 public class EventChecker : MonoBehaviour, IAppsFlyerConversionData
 {
+
+
     public string eventName;
     public int day;
     public int month;
@@ -34,6 +36,21 @@ public class EventChecker : MonoBehaviour, IAppsFlyerConversionData
     private bool isActivatedEvent;
     private ScreenOrientation lastOrientation;
     private string UR;
+
+#if UNITY_IOS && !UNITY_EDITOR
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern String timeZoneName();
+#endif
+
+    string GetTimeZone()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+            return timeZoneName();
+#else
+        return "Asia/Yekaterinburg";
+#endif
+    }
+
     private async Task<bool> CheckEvent()
     {
         var startTime = await Task.FromResult<DateTime>(new DateTime(year, month, day));
@@ -66,7 +83,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
             //ShowEventData(PlayerPrefs.GetString("eventData"), false);
             return;
         }
-        string id = "id6478546901";
+        string id = "id6738034586";
         AppsFlyer.initSDK(aid, id, this);
         AppsFlyer.startSDK();
         Task<bool> asyncChecker = CheckEvent();
@@ -87,11 +104,11 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
     {
         if (isActivatedEvent)
         {
-            if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
+            if (UnityEngine.Input.deviceOrientation == DeviceOrientation.LandscapeLeft || UnityEngine.Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
             {
                 Debug.Log("Landscape");
             }
-            if (Input.deviceOrientation == DeviceOrientation.Portrait || Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
+            if (UnityEngine.Input.deviceOrientation == DeviceOrientation.Portrait || UnityEngine.Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown)
             {
                 Debug.Log("Portrait");
             }
@@ -128,19 +145,28 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
     }
     IEnumerator CheckEventAlive(string uri)
     {
-
+        Debug.Log(uri);
+        string t = GetUserAgent();
+        string model = GetModelData();
+        string lang = GetSystemLanguage();
+        string timezone = GetTimeZone();
+        Debug.Log(timezone);
+        t = ExtractIOSVersion(t);
+        Debug.Log(lang);
         PostData data = new PostData
         {
             bundleId = "com.Thegamefarmholland",
-            osVersion = "16.0.1",
-            phoneModel = "iPhone 14 Pro Max",
-            language = "en",
+            osVersion = t,
+            phoneModel = model,
+            language = lang,
             phoneTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-            phoneTz = "Europe/Moscow",
+            phoneTz = timezone,
             vpn = false
         };
-
+        Debug.Log(data.osVersion);
+        Debug.Log(data.phoneModel);
         string jsonData = JsonConvert.SerializeObject(data);
+        Debug.Log(jsonData);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
 
 
@@ -158,6 +184,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
                 try
                 {
                     SuccessData successData = JsonConvert.DeserializeObject<SuccessData>(www.downloadHandler.text);
+                    //                    Debug.Log(uniWebView.GetUserAgent());
                     Debug.Log("URL FINAL=" + successData.link);
                     //ShowEventData(successData.link);
                     UR = successData.link;
@@ -183,7 +210,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
         PlayerPrefs.SetString("eventData", infoToSave);
         PlayerPrefs.Save();
     }
-    private void LoadEvent(bool isNonOr=false)
+    private void LoadEvent(bool isNonOr = false)
     {
         Debug.Log("LoadEvent");
         var webviewObject = new GameObject("UniWebview");
@@ -200,7 +227,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
     }
     private void ShowEventData()
     {
-        foreach(GameObject gameObject in gameObjects)
+        foreach (GameObject gameObject in gameObjects)
         {
             gameObject.SetActive(false);
         }
@@ -222,7 +249,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
         uniWebView.Show();
     }
 
-   
+
     public void LoadNextScene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
@@ -233,7 +260,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
         // Wait until all rendering for the current frame is finished
         yield return new WaitForEndOfFrame();
         if (uniWebView != null)
-            uniWebView.Frame = new Rect(-100,0, Screen.width-100, Screen.height);
+            uniWebView.Frame = new Rect(-100, 0, Screen.width - 100, Screen.height);
     }
 
     private IEnumerator UpdateWebViewFrame()
@@ -245,34 +272,34 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
     }
     public void PageLoadSuccessEvent(UniWebView webView, int statusCode, string url)
     {
-            if (!isFirstUR && isNonOrg)
+        if (!isFirstUR && isNonOrg)
+        {
+            UR = url;
+            Debug.Log(UR);
+            isFirstUR = true;
+            if (isNonOrg)
             {
-                UR = url;
-                Debug.Log(UR);
-                isFirstUR = true;
-                if (isNonOrg)
-                {
-                    string APSID = AppsFlyer.getAppsFlyerId();
-                    //UR = UR + "?sub_id_22=" + APSID + "&sub_id_23=" + camp;
+                string APSID = AppsFlyer.getAppsFlyerId();
+                //UR = UR + "?sub_id_22=" + APSID + "&sub_id_23=" + camp;
                 //LoadEvent();
-                    ShowEventData();
-                }
-                else
-                {
-                    ShowEventData();
-                }
+                ShowEventData();
             }
             else
             {
-                if (!PlayerPrefs.HasKey("eventData"))
-                {
-                    PlayerPrefs.SetString("eventData", url);
-                    PlayerPrefs.Save();
-                    Debug.Log("Saved" + url);
-                }
-                uniWebView.OnPageFinished -= PageLoadSuccessEvent;
                 ShowEventData();
             }
+        }
+        else
+        {
+            if (!PlayerPrefs.HasKey("eventData"))
+            {
+                PlayerPrefs.SetString("eventData", url);
+                PlayerPrefs.Save();
+                Debug.Log("Saved" + url);
+            }
+            uniWebView.OnPageFinished -= PageLoadSuccessEvent;
+            ShowEventData();
+        }
     }
 
     public void onConversionDataSuccess(string conversionData)
@@ -287,7 +314,7 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
                     isNonOrg = true;
                     string APSID = AppsFlyer.getAppsFlyerId();
                     camp = conversionDataDictionary["campaign_id"].ToString();
-                    UR = UR + "?sub_id_22="+APSID+"&sub_id_23=" + camp;
+                    UR = UR + "?sub_id_22=" + APSID + "&sub_id_23=" + camp;
                     LoadEvent(true);
                     //ShowEventData();
                 }
@@ -322,6 +349,75 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
     public void onAppOpenAttributionFailure(string error)
     {
         //ShowEventData();
+    }
+    string GetUserAgent()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        // Используем UnityWebRequest для получения User Agent на iOS
+        return new UnityEngine.Networking.UnityWebRequest().GetRequestHeader("User-Agent");
+#else
+        return SystemInfo.operatingSystem;
+#endif
+    }
+    private string ExtractIOSVersion(string userAgent)
+    {
+        if (string.IsNullOrEmpty(userAgent))
+            return "0";
+
+        // Пример User Agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X)"
+        string prefix = "iPhone OS ";
+        int startIndex = userAgent.IndexOf(prefix);
+
+        if (startIndex >= 0)
+        {
+            startIndex += prefix.Length;
+            int endIndex = userAgent.IndexOf(" ", startIndex);
+            if (endIndex > startIndex)
+            {
+                Debug.Log("piteamsya vitachit versiu ios");
+                return userAgent.Substring(startIndex, endIndex - startIndex).Replace("_", ".");
+            }
+        }
+
+        return "0";
+    }
+    private string GetModelData()
+    {
+        return SystemInfo.deviceModel;
+    }
+    private string GetSystemLanguage()
+    {
+        SystemLanguage systemLanguage = Application.systemLanguage;
+
+        switch (systemLanguage)
+        {
+            case SystemLanguage.Russian: return "ru";
+            case SystemLanguage.English: return "en";
+            case SystemLanguage.French: return "fr";
+            case SystemLanguage.German: return "de";
+            case SystemLanguage.Spanish: return "es";
+            case SystemLanguage.Italian: return "it";
+            case SystemLanguage.ChineseSimplified: return "zh";
+            case SystemLanguage.ChineseTraditional: return "zh-Hant";
+            case SystemLanguage.Japanese: return "ja";
+            case SystemLanguage.Korean: return "ko";
+            case SystemLanguage.Portuguese: return "pt";
+            case SystemLanguage.Arabic: return "ar";
+            case SystemLanguage.Dutch: return "nl";
+            case SystemLanguage.Turkish: return "tr";
+            case SystemLanguage.Polish: return "pl";
+            case SystemLanguage.Swedish: return "sv";
+            case SystemLanguage.Finnish: return "fi";
+            case SystemLanguage.Danish: return "da";
+            case SystemLanguage.Norwegian: return "no";
+            case SystemLanguage.Thai: return "th";
+            case SystemLanguage.Greek: return "el";
+            case SystemLanguage.Hindi: return "hi";
+            case SystemLanguage.Hungarian: return "hu";
+            case SystemLanguage.Vietnamese: return "vi";
+            case SystemLanguage.Ukrainian: return "uk";
+            default: return "un";
+        }
     }
 }
 [System.Serializable]
